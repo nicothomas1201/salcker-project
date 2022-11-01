@@ -18,7 +18,7 @@ const ChannelListStyled = styled.div`
 
 `
 
-function ChannelList({setChannel}) {
+function ChannelList({setChannel, setAnimate}) {
   let [itemActive, setItem] = useState('dev')
 
   
@@ -28,29 +28,33 @@ function ChannelList({setChannel}) {
       <span className='channel-title'>Canales</span>
       <ul className='list'>
         <ChannelListItem
-        setChannel={setChannel}
-        itemActive={itemActive}
-        setItem={setItem} 
-        id="dev" 
-        text="# development" />
+          setAnimate={setAnimate}
+          setChannel={setChannel}
+          itemActive={itemActive}
+          setItem={setItem} 
+          id="dev" 
+          text="# development" />
         <ChannelListItem
-        setChannel={setChannel}
-        itemActive={itemActive}
-        setItem={setItem} 
-        id="design" 
-        text="# design" />
+          setAnimate={setAnimate}
+          setChannel={setChannel}
+          itemActive={itemActive}
+          setItem={setItem} 
+          id="design" 
+          text="# design" />
         <ChannelListItem
-        setChannel={setChannel}
-        itemActive={itemActive}
-        setItem={setItem} 
-        id="prod" 
-        text="# production" />
+          setAnimate={setAnimate}
+          setChannel={setChannel}
+          itemActive={itemActive}
+          setItem={setItem} 
+          id="prod" 
+          text="# production" />
         <ChannelListItem
-        setChannel={setChannel}
-        itemActive={itemActive}
-        setItem={setItem} 
-        id="project" 
-        text="# proyectos" />
+          setAnimate={setAnimate}
+          setChannel={setChannel}
+          itemActive={itemActive}
+          setItem={setItem} 
+          id="project" 
+          text="# proyectos" />
       </ul>
     </ChannelListStyled>    
   )

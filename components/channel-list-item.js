@@ -14,7 +14,7 @@ const ChannelListItemStyled = styled.li`
   }
 `
 
-function ChannelListItem({text, id, itemActive, setItem, handleClick, setChannel}) {
+function ChannelListItem({text, id, itemActive, setItem, handleClick, setChannel, setAnimate}) {
   let [active, setActive] = useState(true)
 
   useEffect(() => {
@@ -32,6 +32,7 @@ function ChannelListItem({text, id, itemActive, setItem, handleClick, setChannel
 
   function handleClick(){
     setChannel(text)
+    setAnimate(true)
     setItem(id)
   }
 

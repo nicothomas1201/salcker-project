@@ -1,21 +1,34 @@
 import styled from 'styled-components'
 import InputMessage from './input-message'
-import { useState, useRef, useEffect } from 'react'
-import ChatMessage from './chat-message'
+import { useState } from 'react'
 import RenderMessagesChannel from './render-messages-channel'
+import Icon from './icons'
 
 const CentralStyled = styled.div`
-  grid-area: central;
   display: flex;
   flex-direction: column;
-
+  position: absolute;
+  inset: 0;
+  background: var(--black);
+  transform: ${({animate}) => animate ? 'translate(0, 0)' : 'translate(100%, 0)'};
+  transition: .3s transform ease-in-out;  
+  
   .header{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding: .375rem 1rem;
     border-block-end: 1px solid  var(--grey);
     box-sizing: border-box;
     max-block-size: 3.5rem;
+    gap: .5rem;
+
+
+    .button-icon{
+      background: none;
+      border: none;
+      padding: 0;
+      block-size: 1.5rem;
+    }
 
     .header-info{
       .title{
@@ -53,14 +66,35 @@ const CentralStyled = styled.div`
       }
     }
   }
+
+  @media screen and (min-width: 595px){
+    grid-area: central;
+    position: initial;
+    transform: none;
+
+    .header{
+      justify-content: space-between;
+    }
+  }
 `
 
-function Central({ currentChannel }) {
+function Central({ mediaQuery, currentChannel, setAnimate, animate }) {
   let [messages, setMessages] = useState([])
 
+  function handleTouch(){
+    setAnimate(false)
+  }
+
   return (
-    <CentralStyled>
+    <CentralStyled animate={animate}>
       <div className='header'>
+        {
+          !mediaQuery ?  (
+            <button className='button-icon' onTouchStart={handleTouch}>
+              <Icon name="left" size={24} color="var(--white)" />
+            </button>
+          ) : null
+        }
         <div className='header-info'>
           <h4 className='title'>{currentChannel}</h4>
           <span>Rutina de desarrollo diaria</span>

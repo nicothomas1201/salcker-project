@@ -8,7 +8,6 @@ const LayoutStyled = styled.div`
   
 
   @media screen and (min-width: 595px) {
-    border: 1px solid red;
     display: grid;
     grid-template-columns: 4.125rem 16.25rem auto;
     grid-template-areas: "workspaces channels central";
